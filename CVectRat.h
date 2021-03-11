@@ -13,7 +13,12 @@ class CVectRat {
 protected:
 	CRat* arr;
 	int size;
+	string filename;
 public:
+	CVectRat() 
+	virtual ~CVectRat() 
+	
+	
 	CVectRat(int size) {
 		arr = new CRat[size];
 		for (int i = 0; i < size; i++) {
