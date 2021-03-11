@@ -10,7 +10,7 @@ using namespace std;
 
 
 class CVectRat {
-private:
+protected:
 	CRat* arr;
 	int size;
 public:
@@ -38,10 +38,15 @@ public:
 	void Set_arr(int i, CRat m) {
 		this->arr[i] = m;
 	};
+	string Filename() {
+		return filename;
+	}
 
 	CVectRat operator+(const CVectRat& b);
 	CVectRat operator-(const CVectRat& b);
 	CRat operator*(const CVectRat& b);
 	CVectRat& operator=(const CVectRat& b);
-	void print();
+	virtual int output(const char* FileName) = 0;
+	friend class CRat;
+	
 };
