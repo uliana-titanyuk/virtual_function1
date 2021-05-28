@@ -10,22 +10,20 @@ using namespace std;
 
 
 class CVectRat {
-protected:
+private:
 	CRat* arr;
 	int size;
-	string filename;
 public:
-	CVectRat() 
-	virtual ~CVectRat() 
-	
-	
 	CVectRat(int size) {
+		
 		arr = new CRat[size];
 		for (int i = 0; i < size; i++) {
 			CRat m;
 			arr[i] = m;
 		}
 		this->size = size;
+
+		
 	};
 
 	CVectRat(const CVectRat& other) {
@@ -34,6 +32,8 @@ public:
 		for (int i = 0; i < other.size; i++) {
 			arr[i] = other.arr[i];
 		}
+
+
 	};
 
 	~CVectRat() {
@@ -43,15 +43,21 @@ public:
 	void Set_arr(int i, CRat m) {
 		this->arr[i] = m;
 	};
-	string Filename() {
-		return filename;
-	}
 
 	CVectRat operator+(const CVectRat& b);
 	CVectRat operator-(const CVectRat& b);
 	CRat operator*(const CVectRat& b);
 	CVectRat& operator=(const CVectRat& b);
-	virtual int output(const char* FileName) = 0;
-	friend class CRat;
-	
+	void print();
 };
+
+class gorCVectRat : public CVectRat{
+	using CVectRat:: operator=;
+	using CVectRat::size();
+		virtual  void gorprint(int x);
+};
+class vertCVectRat : public CVectRat {
+	using CVectRat:: operator=;
+	virtual void vertprint(int y);
+};
+
