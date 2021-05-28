@@ -9,7 +9,8 @@ void raschet(void) {
 
 	CVectRat vect1(size);
 	CVectRat vect2(size);
-	CVectRat vect3(size);
+	gorCVectRat vect3(size);
+	vertCVectRat vect4(size);
 	CRat m;
 
 	vect1 = input(size);
@@ -18,14 +19,19 @@ void raschet(void) {
 	cout << "________________________________________" << endl;
 	cout << "\n";
 	vect3 = vect1 + vect2;
-	vect3.print();
+	vect3.gorprint();
+	vect4 = vect3
 	cout << "\n";
 	vect3 = vect1 - vect2;
-	vect3.print();
+	vect3.gorprint();
 	cout << "\n";
 	m = vect1 * vect2;
 	m.print();
 	cout << "\n";
+	vect4.vertprint();
+	vect4 = vect3;
+	vect4.vertprint();
+	m.print();
 	cout << "________________________________________" << endl;
 	cout << "\n";
 };
