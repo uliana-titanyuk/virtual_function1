@@ -26,20 +26,34 @@ CRat CVectRat :: operator*(const CVectRat& b) {
 	}
 	return a;
 };
-
+int CVectRat:: size(const CVectRat) {
+	CVectRat m(size);
+	return size;
+}
 CVectRat& CVectRat :: operator=(const CVectRat& b) {
 	for (int i = 0; i < size; i++) {
 		arr[i] = b.arr[i];
 	}
+	size = b.size;
+	
 	return *this;
 };
 
-void CVectRat::print() {
+void vertCVectRat::vertprint(int w) {
 	cout << "(";
-	for (int i = 0; i < size - 1; i++) {
+	for (int i = 0; i < w - 1; i++) {
+		arr[i].print();
+		cout << "/n";
+	}
+	arr[w - 1].print();
+	cout << ")\n";
+};
+void gorCVectRat::gorprint(int w) {
+	cout << "(";
+	for (int i = 0; i < w - 1; i++) {
 		arr[i].print();
 		cout << " , ";
 	}
-	arr[size - 1].print();
+	arr[w - 1].print();
 	cout << ")\n";
 };
