@@ -10,7 +10,7 @@ using namespace std;
 
 
 class CVectRat {
-private:
+protected:
 	CRat* arr;
 	int size;
 public:
