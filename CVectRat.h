@@ -12,7 +12,7 @@ using namespace std;
 class CVectRat {
 protected:
 	CRat* arr;
-	int size;
+	int size_;
 public:
 	CVectRat(int size) {
 		
@@ -21,15 +21,15 @@ public:
 			CRat m;
 			arr[i] = m;
 		}
-		this->size = size;
+		this->size_ = size;
 
 		
 	};
 
 	CVectRat(const CVectRat& other) {
-		this->size = other.size;
-		this->arr = new CRat[other.size];
-		for (int i = 0; i < other.size; i++) {
+		this->size_ = other.size_;
+		this->arr = new CRat[other.size_];
+		for (int i = 0; i < other.size_; i++) {
 			arr[i] = other.arr[i];
 		}
 
@@ -38,26 +38,40 @@ public:
 
 	~CVectRat() {
 		delete[] arr;
-		size = 0;
+		size_ = 0;
 	};
 	void Set_arr(int i, CRat m) {
 		this->arr[i] = m;
 	};
+	CRat get(int i) const {
+		return this->arr[i];
+	}
 
-	CVectRat operator+(const CVectRat& b);
-	CVectRat operator-(const CVectRat& b);
+	//CVectRat operator+(const CVectRat& b);
+	//CVectRat operator-(const CVectRat& b);
 	CRat operator*(const CVectRat& b);
 	CVectRat& operator=(const CVectRat& b);
-	void print();
+	int size() const;
+	virtual void print() const = 0;
 };
 
 class gorCVectRat : public CVectRat{
+public:
+	gorCVectRat(int size) : CVectRat(size) {
+	}
 	using CVectRat:: operator=;
-	using CVectRat::size();
-		virtual  void gorprint(int x);
+	virtual void print() const override;
+
+	friend gorCVectRat operator+(const CVectRat& a, const CVectRat& b);
 };
+
 class vertCVectRat : public CVectRat {
+public:
+	vertCVectRat(int size) : CVectRat(size) {
+	}
 	using CVectRat:: operator=;
-	virtual void vertprint(int y);
+	virtual void print() const override;
 };
+
+
 
