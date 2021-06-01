@@ -2,58 +2,57 @@
 #include "CRat.h"
 #include "CVectRat.h"
 
-CVectRat CVectRat :: operator+(const CVectRat& b) {
-	CVectRat m(size);
-	for (int i = 0; i < size; i++) {
-		m.arr[i] = arr[i] + b.arr[i];
+gorCVectRat operator+(const CVectRat& a, const CVectRat& b) {
+	gorCVectRat m(a.size());
+	for (int i = 0; i < m.size(); i++) {
+		m.arr[i] = a.get(i) + b.get(i);
 	}
 	return m;
 };
 
-CVectRat CVectRat :: operator-(const CVectRat& b) {
-	CVectRat m(size);
-	for (int i = 0; i < size; i++) {
-		m.arr[i] = arr[i] - b.arr[i];
-	}
-	return m;
-};
+//CVectRat CVectRat :: operator-(const CVectRat& b) {
+//	CVectRat m(size_);
+//	for (int i = 0; i < size_; i++) {
+//		m.arr[i] = arr[i] - b.arr[i];
+//	}
+//	return m;
+//};
 
 CRat CVectRat :: operator*(const CVectRat& b) {
-	CVectRat m(size);
 	CRat a;
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size_; i++) {
 		a = a + arr[i] * b.arr[i];
 	}
 	return a;
 };
-int CVectRat:: size(const CVectRat) {
-	CVectRat m(size);
-	return size;
+int CVectRat::size() const {
+	return size_;
 }
 CVectRat& CVectRat :: operator=(const CVectRat& b) {
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size_; i++) {
 		arr[i] = b.arr[i];
 	}
-	size = b.size;
+	size_ = b.size();
 	
 	return *this;
 };
 
-void vertCVectRat::vertprint(int w) {
+void vertCVectRat::print() const {
 	cout << "(";
-	for (int i = 0; i < w - 1; i++) {
+	for (int i = 0; i < size_ - 1; i++) {
 		arr[i].print();
 		cout << "/n";
 	}
-	arr[w - 1].print();
+	arr[size_ - 1].print();
 	cout << ")\n";
-};
-void gorCVectRat::gorprint(int w) {
+}
+
+void gorCVectRat::print() const {
 	cout << "(";
-	for (int i = 0; i < w - 1; i++) {
+	for (int i = 0; i < size_ - 1; i++) {
 		arr[i].print();
 		cout << " , ";
 	}
-	arr[w - 1].print();
+	arr[size_ - 1].print();
 	cout << ")\n";
-};
+}
